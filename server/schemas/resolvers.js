@@ -37,7 +37,7 @@ const resolvers = {
     },
     saveBook: async (parent, { input }, context) => {
       if (context.user) {// If user is logged in
-        const updatedUser = await Thought.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },// Find user by id
           { $addToSet: { savedBooks: input } },// Add book to savedBooks array
           { new: true, runValidators: true },
@@ -49,7 +49,7 @@ const resolvers = {
     },  
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {// If user is logged in
-        const updatedUser = await Thought.findOneAndUpdate(// Remove book from savedBooks array
+        const updatedUser = await User.findOneAndUpdate(// Remove book from savedBooks array
           { _id: context.user._id },
           { $pull: { savedBooks: { bookId } } },// Remove book by bookId
           { new: true },
