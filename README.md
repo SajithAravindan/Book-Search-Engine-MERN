@@ -16,9 +16,7 @@ User Story & Acceptance Criteria follow the AS AN / I WANT / SO THAT format.
 
 * [Usage](#usage)
 
-* [Credits](#credits)
-
-* [Presentation](#presentation) 
+* [Installation](#installation)
 
 * [Demo](#demo) 
 
@@ -86,29 +84,26 @@ GIVEN a book search engine
 
 ## Usage
 
-As mentioned above, users can create an account, login, create a review/rate books you've read and also read reviews from other users!
+As mentioned above, users can create an account, login, search books and also save/view liked books!
 
+## Installation
 
-## Credits
-
-- https://nodemailer.com/about/ - used nodmailer to welcome new users on sign up.
-
-
-## Presentation
-
-Link to presentation [(https://docs.google.com/presentation/d/10mNnZ41kgi2nFrGSVbyeX_UDrG2IgeSDkwl0oWcEGfQ/edit?usp=sharing)]
-
+To install this project:
+* Start by forking this repository and clone repository to your local machine.
+* Open the project in your preffered IDE
+* Look at package.json file that specifies dependencies for this project, so be sure to run `npm    install`. This will install all the required packages. 
+* Invoke application with `npm run develop`
 
 ## Demo
 
-<img src='/public/imgs/demo.png'>
+<img src='./client/src/assets/demo.png'>
 
-Deployed Application URL: https://blooming-thicket-72514-75b0ef205a97.herokuapp.com/
+Deployed Application URL: https://book-search-engine-7w42.onrender.com/
 
-GitHub URL: https://github.com/SajithAravindan/bookreviewer.git
+GitHub URL: https://github.com/SajithAravindan/Book-Search-Engine-MERN
 
 ## License
 
-* Please refer to the LICENSE in the repo. <a href="https://github.com/SajithAravindan/E-commerce_APP/blob/main/LICENSE">(MIT License)</a>
+* Please refer to the LICENSE in the repo. <a href="https://github.com/SajithAravindan/Book-Search-Engine-MERN/blob/main/LICENSE">(MIT License)</a>
 
 
