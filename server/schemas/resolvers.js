@@ -9,8 +9,8 @@ const resolvers = {
         const userData = await User
           .findOne({ _id: context.user._id })// Find user by id
           .select("-__v -password")// Exclude the __v and password fields
-          .populate("books");// Populate the books field
-
+          //.populate("books");// Populate the books field
+        
         return userData;
       };
       throw new AuthenticationError("You must be logged in!");
@@ -36,17 +36,19 @@ const resolvers = {
       return { token, user };// Return token and user
     },
     saveBook: async (parent, { input }, context) => {
-      if (context.user) {// If user is logged in
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },// Find user by id
-          { $addToSet: { savedBooks: input } },// Add book to savedBooks array
-          { new: true, runValidators: true },
-        )
-        .populate("books");// Populate the books field
-        return updatedUser;// Return updated user
-      }
+      
+      if (context.user) {
+          const updatedUser = await User
+              .findOneAndUpdate(
+                  { _id: context.user._id }, 
+                  { $addToSet: { savedBooks: input } },
+                  { new: true },
+              )
+              
+          return updatedUser;
+      };
       throw new AuthenticationError("You must be logged in to save books!");
-    },  
+  },
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {// If user is logged in
         const updatedUser = await User.findOneAndUpdate(// Remove book from savedBooks array

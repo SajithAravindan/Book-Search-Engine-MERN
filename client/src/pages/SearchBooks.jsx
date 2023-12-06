@@ -10,8 +10,8 @@ import {
 
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
-import { useMutation } from "@apollo/client";
-import { SAVE_BOOK } from "../utils/mutations";
+import { useMutation } from "@apollo/client";//Import useMutation hooks
+import { SAVE_BOOK } from "../utils/mutations";//Save book mutation
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -20,7 +20,7 @@ const SearchBooks = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
-  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+  const [saveBook, { error }] = useMutation(SAVE_BOOK);//Save book mutation
   
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
@@ -54,6 +54,7 @@ const SearchBooks = () => {
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
+        link: book.volumeInfo.infoLink,
       }));
 
       setSearchedBooks(bookData);
@@ -76,8 +77,8 @@ const SearchBooks = () => {
     }
 
     try {
-       const { data } = await saveBook({
-        variables: { bookData: bookToSave },
+      const { data } = await saveBook({
+        variables: { input: bookToSave },
       });
 
       // if book successfully saves to user's account, save book id to state
@@ -124,7 +125,7 @@ const SearchBooks = () => {
           {searchedBooks.map((book) => {
             return (
               <Col md="4" key={book.bookId}>
-                <Card border='dark'>
+                <Card border='dark' className='cardcontainer'>
                   {book.image ? (
                     <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
                   ) : null}
